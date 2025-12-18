@@ -1,169 +1,99 @@
-# SUMO Robot Controller — Industrial Power & Control Unit
+# SUMO Robot Controller (Power & Control Unit)
 
 ![494876971-89bf1ff8-a2c9-4657-9f19-c809cdc8a300](https://github.com/user-attachments/assets/5e8692a4-bd68-43f9-b0a0-55a354024e41)
 
+High-current, competition-grade control and power distribution unit for autonomous SUMO robots—built for reliability, modularity, and electrical safety.
 
-> **High‑current, competition‑grade control and power distribution unit designed for autonomous SUMO robots.**
-> Built with reliability, modularity, and electrical safety in mind.
+## Overview
+This repository documents a compact, industrial-style controller enclosure that integrates:
+- Power input protection and distribution
+- Motor driving (high current)
+- Regulated logic power
+- Control electronics interfaces (sensors / UI / comms)
 
----
+The design focuses on clear separation between power and logic, thermal robustness, and fast serviceability during competitions.
 
-## 📌 Project Overview
+## Key Features
+- High-current battery input with dedicated **main fuse**
+- External **emergency kill switch** that cuts **entire system power**
+- Segregated rails: **motor power** (high current) and **logic power** (regulated / low noise)
+- Secure wiring via screw terminals and service-friendly layout
+- Enclosure designed for inspection and quick maintenance
 
-This project presents a **compact industrial-style controller enclosure** for a SUMO robot. It integrates **power management, motor driving, control electronics, and safety interfaces** into a single rigid unit suitable for harsh competition environments.
-
-The design emphasizes:
-
-* High current handling
-* Thermal management
-* Clear separation between power and logic
-* Easy serviceability during competitions
-
-The repository documents **hardware design, pin mapping, component selection, and integration guidelines**.
-
----
-
-## 🎯 Key Objectives
-
-* Provide a **robust electrical backbone** for a SUMO robot
-* Minimize wiring complexity and failure points
-* Support **high‑torque DC motors** with stable power delivery
-* Ensure **competition safety compliance** (kill switch, fusing, insulation)
-* Enable rapid debugging and maintenance
-
----
-
-## 🧱 System Architecture
-
-```
+## System Architecture
 Battery Pack
-   │
-   ├── Main Fuse & Emergency Kill Switch
-   │
-   ├── Power Distribution Bus
-   │      ├── Motor Drivers (High Current)
-   │      └── DC‑DC Regulators (Logic Power)
-   │
-   └── Control Unit (MCU / Logic Board)
-          ├── Sensors (Line, Distance, IMU)
-          ├── User Interface (Buttons / LEDs)
-          └── Communication Ports
-```
+│
+├─ Main Fuse + Emergency Kill Switch
+│
+├─ Power Distribution Bus
+│ ├─ Motor Drivers (High Current)
+│ └─ DC-DC Regulators (Logic Power)
+│
+└─ Control Unit (MCU / Logic Board)
+├─ Sensors (Line / Distance / IMU)
+├─ User Interface (Buttons / LEDs)
+└─ Communication Ports
 
----
+markdown
+نسخ الكود
 
-## ⚙️ Hardware Highlights
+## Hardware Modules
+### Power & Protection
+- Main fuse for short-circuit protection
+- Kill switch accessible from the exterior
+- Power rails separated to reduce noise and improve reliability
 
-### 🔋 Power System
+### Motor Control
+- High-current motor drivers
+- Low-loss routing and connectors
+- Designed for high-torque SUMO motors
 
-* High‑current battery input (competition‑grade)
-* Dedicated **main fuse** for short‑circuit protection
-* **Emergency stop / kill switch** accessible from the exterior
-* Segregated power rails:
+### Control & I/O
+- MCU/control board integration
+- Defined pinout for motors, sensors, UI, and expansion headers
 
-  * Motor power (high current)
-  * Logic power (regulated, low noise)
+### Thermal & Mechanical
+- Passive heatsinking for power electronics
+- Ventilated enclosure and component spacing for airflow
+- Competition-ready enclosure with external access to key controls/indicators
 
-### 🚗 Motor Control
+## Pin Mapping & Data Files
+Pin assignments and wiring references:
+- `pins_connection.csv` — MCU pin mapping and signal routing
+- `components.csv` — components list / reference data
 
-* Multiple high‑current motor drivers
-* Screw terminals for secure motor connections
-* Designed for **high torque, low RPM SUMO motors**
-* Optimized copper paths and connectors to reduce losses
+> Always verify the latest pin mapping before powering the system.
 
-### 🧠 Control Electronics
+## Safety Notes
+- Place the **fuse before any active electronics**
+- Ensure the kill switch disconnects **full system power** (not logic-only)
+- Avoid exposed conductive parts and verify insulation/clearances
+- Use proper wire gauge for peak motor current and secure strain relief
 
-* Central microcontroller / control board
-* Clear pin mapping for:
+## Testing & Bring-Up (Recommended)
+1. Continuity + short-circuit checks (unpowered)
+2. Power-up logic rail only (motors disconnected)
+3. Single-motor testing under load
+4. Full-system stress testing in competition conditions
 
-  * Motor control
-  * Sensors
-  * User inputs
-* Expansion headers for future upgrades
-
-### 🌡 Thermal Management
-
-* Passive heat‑sinks on power electronics
-* Ventilated enclosure design
-* Component spacing optimized for airflow
-
----
-
-## 🧩 Enclosure Design
-
-* Rigid, competition‑ready enclosure
-* Transparent body for **visual inspection** during matches
-* Bottom mounting plate compatible with SUMO chassis standards
-* External access to:
-
-  * Power switch
-  * Kill switch
-  * Status indicators
-
----
-
-## 🔌 Pin Mapping & Connections
-
-Detailed pin mappings and wiring tables are provided in:
-
-* `pins_connection.csv`
-* `components.csv`
-
-These files define:
-
-* MCU pin assignments
-* Motor driver connections
-* Power input/output mapping
-* Sensor and interface wiring
-
-> ⚠️ **Always verify pin mappings before powering the system.**
-
----
-
-## 🛡 Safety Considerations
-
-* Mandatory fuse before any active electronics
-* Kill switch cuts **entire system power**, not logic only
-* No exposed conductive parts
-* Proper wire gauges selected for peak motor current
-
----
-
-## 🧪 Testing Strategy
-
-* Continuity and short‑circuit testing before power‑up
-* Logic‑only power test (no motors connected)
-* Single‑motor load testing
-* Full‑system stress test under competition conditions
-
----
-
-## 📂 Repository Structure
-
-```
+## Repository Layout
 ├── hardware/
-│   ├── enclosure/
-│   ├── schematics/
-│   └── pcb/
+│ ├── enclosure/
+│ ├── schematics/
+│ └── pcb/
 ├── docs/
-│   ├── wiring_diagrams/
-│   └── images/
+│ ├── wiring_diagrams/
+│ └── images/
 ├── pins_connection.csv
 ├── components.csv
 └── README.md
-```
 
----
+markdown
+نسخ الكود
 
-## 🚀 Future Improvements
-
-* Current sensing & telemetry
-* Smart battery monitoring
-* Modular motor driver boards
-* EMI shielding enhancements
-* CAN / RS‑485 communication support
-
-
----
-
-> 💡 *If you find this project useful, consider starring ⭐ the repository and contributing improvements.*
+## Roadmap
+- Current sensing and telemetry
+- Battery monitoring
+- Modular motor driver boards
+- EMI improvements (shielding / filtering)
+- CAN / RS-485 support
