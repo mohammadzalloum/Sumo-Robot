@@ -34,9 +34,7 @@ Battery Pack
 ├─ User Interface (Buttons / LEDs)
 └─ Communication Ports
 
-markdown
 نسخ الكود
-
 ## Hardware Modules
 ### Power & Protection
 - Main fuse for short-circuit protection
@@ -88,7 +86,6 @@ Pin assignments and wiring references:
 ├── components.csv
 └── README.md
 
-markdown
 نسخ الكود
 
 ## Roadmap
