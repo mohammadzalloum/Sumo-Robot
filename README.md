@@ -1,8 +1,6 @@
 # SUMO Robot Controller — Industrial Power & Control Unit
 
-<p align="center">
 ![494876971-89bf1ff8-a2c9-4657-9f19-c809cdc8a300](https://github.com/user-attachments/assets/5e8692a4-bd68-43f9-b0a0-55a354024e41)
-</p>
 
 
 > **High‑current, competition‑grade control and power distribution unit designed for autonomous SUMO robots.**
